@@ -18,7 +18,7 @@ client.fetch(TARGET_URL1,function (err, $, res, body) {
     }
   });
 
-  var text = fs.readFileSync('/home/steav/Documents/P/senm/senm_update.txt', "utf-8");
+  var text = fs.readFileSync('/home/steav/Documents/P/senm/__senm_update.txt', "utf-8");
   text = text.split(',');
   list_s = list_s.split(',')
 
@@ -48,7 +48,7 @@ client.fetch(TARGET_URL1,function (err, $, res, body) {
   });
 
   //console.log(list);
-  fs.writeFileSync('/home/steav/Documents/P/senm/senm_update.txt', list_s);
+  fs.writeFileSync('/home/steav/Documents/P/senm/__senm_update.txt', list_s);
 });
 
 
@@ -63,7 +63,7 @@ client.fetch(TARGET_URL2, function (err, $, res, body) {
     }
   });
 
-  var text_e = fs.readFileSync('/home/steav/Documents/P/senm/eatm_update.txt', "utf-8");
+  var text_e = fs.readFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', "utf-8");
   text_e = text_e.split(',');
   list_e = list_e.split(',');
 
@@ -91,5 +91,5 @@ client.fetch(TARGET_URL2, function (err, $, res, body) {
     message: upl2.split("\r")
   });
 
-  fs.writeFileSync('/home/steav/Documents/P/senm/eatm_update.txt', list_e);
+  fs.writeFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', list_e);
 });

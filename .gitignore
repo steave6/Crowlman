@@ -1,2 +1,5 @@
 # Dependency directory
 node_modules
+
+# tmp file
+__*.txt
