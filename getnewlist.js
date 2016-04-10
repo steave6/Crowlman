@@ -25,6 +25,7 @@ client.fetch(TARGET_URL1,function (err, $, res, body) {
 
   var j = 0;
   var upl = [];
+  console.log("senmanga");
   for (var i = 0; i < text.length; i++) {
     if (text[0] == list_s[0]) {
       upl = "No update";
@@ -68,6 +69,7 @@ client.fetch(TARGET_URL2, function (err, $, res, body) {
 
   var j = 0;
   var upl2 = [];
+  console.log("eatmanga");
   for (var i = 0; i < text_e.length; i++) {
     if (text_e[0] == list_e[0]) {
       upl2 = "No update";
