@@ -1,13 +1,14 @@
 'use strict';
-const TARGET_URL = "http://himado.in/?sort=movie_id&cat=%E3%82%A2%E3%83%8B%E3%83%A1&mode=search",
-  TARGET_URL1 = "http://raw.senmanga.com/",
-  TARGET_URL2 = "http://eatmanga.com/popular/";
+
+const TARGET_URLH = "http://himado.in/?sort=movie_id&cat=%E3%82%A2%E3%83%8B%E3%83%A1&mode=search",
+  TARGET_URLS = "http://raw.senmanga.com/",
+  TARGET_URLE = "http://eatmanga.com/popular/";
 
 const client = require('cheerio-httpcli');
 const fs = require('fs');
 const notifier = require('node-notifier');
 
-client.fetch(TARGET_URL1,function (err, $, res, body) {
+client.fetch(TARGET_URLS,function (err, $, res, body) {
   // リンク一覧を表示
   let list_s = [];
   let ite = 0;
@@ -29,18 +30,18 @@ client.fetch(TARGET_URL1,function (err, $, res, body) {
   for (let i = 0; i < list_s.length; i++) {
     if (text[0] ===  list_s[0]) {
       upl = "No update";
-      console.log(upl);
       console.log("latest = " + list_s[0]);
       break;
     } else if (text[0] === list_s[count]) {
       console.log("update item = " + count);
-      console.log(upl);
       break;
     } else {
       upl.push(list_s[count]);
       count++;
     }
   }
+
+  console.log(upl);
 
   let note = upl.toString();
   note = note.replace(/,/g, "\n");
@@ -54,41 +55,38 @@ client.fetch(TARGET_URL1,function (err, $, res, body) {
 });
 
 
-client.fetch(TARGET_URL2, function (err, $, res, body) {
+client.fetch(TARGET_URLE, function (err, $, res, body) {
   let list_e = [];
   let ite2 = 0;
   $('th > a').each(function (idx) {
     let push = $(this).text();
     list_e.push(push);
     ite2 ++;
-    // if (ite2 >= 20) {
-    //   return false;
-    // }
   });
 
   let text_e = fs.readFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', "utf-8");
   text_e = text_e.split(',');
 
   let count = 0;
-  let upl2 = [];
+  let upl = [];
   console.log("eatmanga");
   for (let i = 0; i < list_e.length; i++) {
     if (text_e[0] ===  list_e[0]) {
-      upl2 = "No update";
-      console.log(upl2);
+      upl = "No update";
       console.log("latest = " + list_e[0]);
       break;
     } else if (text_e[0] === list_e[i]) {
       console.log("update item = " + count);
-      console.log(upl2);
       break;
     } else {
-      upl2.push(list_e[count]);
+      upl.push(list_e[count]);
       count++;
     }
   }
 
-  let note = upl2.toString();
+  console.log(upl);
+
+  let note = upl.toString();
   note = note.replace(/,/g, "\n");
 
   notifier.notify({
@@ -101,7 +99,7 @@ client.fetch(TARGET_URL2, function (err, $, res, body) {
 
 
 
-client.fetch(TARGET_URL, function (err, $, res, body) {
+client.fetch(TARGET_URLH, function (err, $, res, body) {
   if (err) { console.log(err); return; }
 
   let list_hima = [];
@@ -123,26 +121,26 @@ client.fetch(TARGET_URL, function (err, $, res, body) {
   let text_e = fs.readFileSync('/home/steav/Documents/P/senm/__himado.txt', "utf-8");
   text_e = text_e.split(',');
 
-  let count_h = 0;
-  let upl2 = [];
+  let count = 0;
+  let upl = [];
   console.log("himado.in")
   for (let i = 0; i < list_hima.length; i++) {
     if (text_e[0] === list_hima[0]) {
-      upl2 = "No update";
-      console.log(upl2);
+      upl = "No update";
       console.log("latest = " + list_hima[0]);
       break;
     } else if (text_e[0] === list_hima[i]) {
-      console.log("update item = " + count_h);
-      console.log(upl2);
+      console.log("update item = " + count);
       break;
     } else {
-      upl2.push(list_hima[count_h]);
-      count_h++;
+      upl.push(list_hima[count]);
+      count++;
     }
   }
 
-  let note = upl2.toString();
+  console.log(upl);
+
+  let note = upl.toString();
   note = note.replace(/,/g, "\n");
 
   notifier.notify({
