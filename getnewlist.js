@@ -1,6 +1,5 @@
 'use strict';
-
-const TARGET_URL = "http://himado.in/?sort=today_view_cnt&cat=%E3%82%A2%E3%83%8B%E3%83%A1&mode=search",
+const TARGET_URL = "http://himado.in/?sort=movie_id&cat=%E3%82%A2%E3%83%8B%E3%83%A1&mode=search",
   TARGET_URL1 = "http://raw.senmanga.com/",
   TARGET_URL2 = "http://eatmanga.com/popular/";
 
