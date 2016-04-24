@@ -35,7 +35,7 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
     }
   });
 
-  let text = fs.readFileSync('/home/steav/Documents/P/senm/__senm_update.txt', "utf-8");
+  let text = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__senm_update.txt', "utf-8");
   text = text.split(',');
 
   let  count = 0;
@@ -65,7 +65,7 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
   
   Notif(YN, "senmanga update", note);
 
-  fs.writeFileSync('/home/steav/Documents/P/senm/__senm_update.txt', list_s);
+  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__senm_update.txt', list_s);
 });
 
 
@@ -76,7 +76,7 @@ client.fetch(TARGET_URLE, function (err, $, res, body) {
     list_e.push(push);
   });
 
-  let text_e = fs.readFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', "utf-8");
+  let text_e = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__eatm_update.txt', "utf-8");
   text_e = text_e.split(',');
 
   let count = 0;
@@ -106,7 +106,7 @@ client.fetch(TARGET_URLE, function (err, $, res, body) {
 
   Notif(YN, 'eatmanga update', note);
 
-  fs.writeFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', list_e);
+  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__eatm_update.txt', list_e);
 });
 
 
@@ -128,7 +128,7 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
     }
   });
 
-  let text_e = fs.readFileSync('/home/steav/Documents/P/senm/__himado.txt', "utf-8");
+  let text_e = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', "utf-8");
   text_e = text_e.split(',');
 
   let count = 0;
@@ -158,5 +158,5 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
 
   Notif(YN, 'himado.in update', note);
 
-  fs.writeFileSync('/home/steav/Documents/P/senm/__himado.txt', list_hima);
+  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', list_hima);
 });
