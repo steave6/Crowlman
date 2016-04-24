@@ -71,11 +71,9 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
 
 client.fetch(TARGET_URLE, function (err, $, res, body) {
   let list_e = [];
-  let ite2 = 0;
   $('th > a').each(function (idx) {
     let push = $(this).text();
     list_e.push(push);
-    ite2 ++;
   });
 
   let text_e = fs.readFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', "utf-8");
@@ -120,9 +118,7 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
   let ite = 0;
   $('#thumb > tr').each(function (idx) {
     ite ++;
-    let ite2 = 0;
     $(".thumbblock_3colum", this).each(function (idx) {
-      ite2++;
       let push = $("a", this).attr("title"); //目的のテキストを抽出
       list_hima.push(push); //データをリストに格納
     });
