@@ -8,6 +8,20 @@ const client = require('cheerio-httpcli');
 const fs = require('fs');
 const notifier = require('node-notifier');
 
+
+// Notification func If there is any update.
+function Notif (YN, title, message) {
+  if (YN) {
+      notifier.notify({
+      title: title,
+      message: message
+    });
+  } else {
+    return;
+  }
+}
+
+
 client.fetch(TARGET_URLS,function (err, $, res, body) {
   // リンク一覧を表示
   let list_s = [];
@@ -26,14 +40,17 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
 
   let  count = 0;
   let  upl = [];
+  let  YN;
   console.log("senmanga");
   for (let i = 0; i < list_s.length; i++) {
     if (text[0] ===  list_s[0]) {
       upl = "No update";
       console.log("latest = " + list_s[0]);
+      YN = false;
       break;
     } else if (text[0] === list_s[count]) {
       console.log("update item = " + count);
+      YN = true;
       break;
     } else {
       upl.push(list_s[count]);
@@ -45,11 +62,8 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
 
   let note = upl.toString();
   note = note.replace(/,/g, "\n");
-
-  notifier.notify({
-    title: 'senmanga update',
-    message: note
-  });
+  
+  Notif(YN, "senmanga update", note);
 
   fs.writeFileSync('/home/steav/Documents/P/senm/__senm_update.txt', list_s);
 });
@@ -69,14 +83,17 @@ client.fetch(TARGET_URLE, function (err, $, res, body) {
 
   let count = 0;
   let upl = [];
+  let  YN;
   console.log("eatmanga");
   for (let i = 0; i < list_e.length; i++) {
     if (text_e[0] ===  list_e[0]) {
       upl = "No update";
       console.log("latest = " + list_e[0]);
+      YN = false;
       break;
     } else if (text_e[0] === list_e[i]) {
       console.log("update item = " + count);
+      YN = true;
       break;
     } else {
       upl.push(list_e[count]);
@@ -89,10 +106,7 @@ client.fetch(TARGET_URLE, function (err, $, res, body) {
   let note = upl.toString();
   note = note.replace(/,/g, "\n");
 
-  notifier.notify({
-    title: 'eatmanga update',
-    message: note 
-  });
+  Notif(YN, 'eatmanga update', note);
 
   fs.writeFileSync('/home/steav/Documents/P/senm/__eatm_update.txt', list_e);
 });
@@ -123,14 +137,17 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
 
   let count = 0;
   let upl = [];
+  let  YN;
   console.log("himado.in")
   for (let i = 0; i < list_hima.length; i++) {
     if (text_e[0] === list_hima[0]) {
       upl = "No update";
       console.log("latest = " + list_hima[0]);
+      YN = false;
       break;
     } else if (text_e[0] === list_hima[i]) {
       console.log("update item = " + count);
+      YN = true;
       break;
     } else {
       upl.push(list_hima[count]);
@@ -143,10 +160,7 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
   let note = upl.toString();
   note = note.replace(/,/g, "\n");
 
-  notifier.notify({
-    title: 'himado.in update',
-    message: note,
-  });
+  Notif(YN, 'himado.in update', note);
 
   fs.writeFileSync('/home/steav/Documents/P/senm/__himado.txt', list_hima);
 });
