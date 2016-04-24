@@ -12,6 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio-httpcli": "^0.6.8",
+    "fs": "0.0.2",
     "node-notifier": "^4.5.0"
+  },
+  "devDependencies": {
+    "cron": "^1.1.0",
+    "time": "^0.11.4"
   }
 }
