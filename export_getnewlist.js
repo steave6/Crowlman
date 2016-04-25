@@ -147,6 +147,11 @@ module.exports = function () {
         YN = true;
         break;
       } else {
+        if (text_e[1] === list_hima[i].href) {
+          console.log("update item = " + count);
+          YN = true;
+          break;
+        }
         upl.push(list_hima[count].title);
         count++;
       }
