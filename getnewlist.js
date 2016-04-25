@@ -117,8 +117,12 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
   $('#thumb > tr').each(function (idx) {
     ite ++;
     $(".thumbblock_3colum", this).each(function (idx) {
-      let push = $("a", this).attr("title"); //目的のテキストを抽出
-      list_hima.push(push); //データをリストに格納
+      let push_href = $("a", this).attr("href"); 
+      let push_title = $("a", this).attr("title"); 
+      list_hima.push({
+        href: push_href,
+        title: push_title
+      }); 
     });
 
     if (ite >= 10) {
@@ -134,16 +138,16 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
   let  YN;
   console.log("---himado.in---")
   for (let i = 0; i < list_hima.length; i++) {
-    if (text_e[0] === list_hima[0]) {
-      upl = "No update\n" + "latest = " + list_hima[0];
+    if (text_e[0] === list_hima[0].href) {
+      upl = "No update\n" + "latest = " + list_hima[0].title;
       YN = false;
       break;
-    } else if (text_e[0] === list_hima[i]) {
+    } else if (text_e[0] === list_hima[i].href) {
       console.log("update item = " + count);
       YN = true;
       break;
     } else {
-      upl.push(list_hima[count]);
+      upl.push(list_hima[count].title);
       count++;
     }
   }
@@ -155,5 +159,12 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
 
   Notif(YN, 'himado.in update', note);
 
-  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', list_hima);
+  let save = [];
+  let himatitle = [];
+  for (let i = 0; i < list_hima.length; i++) {
+    save.push(list_hima[i].href);
+    himatitle.push(list_hima[i].title);
+  }
+  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', save);
+  fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado_update.txt', himatitle);
 });
