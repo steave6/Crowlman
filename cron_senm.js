@@ -4,7 +4,7 @@ const cronJob = require('cron').CronJob;
 const getNew = require('./export_getnewlist');
  
 // 毎秒実行
-let cronTime = "00 */20 * * * *";
+let cronTime = "00 00 * * * *";
  
 // 一度だけ実行したい場合、Dateオブジェクトで指定も可能
 // let cronTime = new Date();

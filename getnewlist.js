@@ -41,11 +41,10 @@ client.fetch(TARGET_URLS,function (err, $, res, body) {
   let  count = 0;
   let  upl = [];
   let  YN;
-  console.log("senmanga");
+  console.log("---senmanga---");
   for (let i = 0; i < list_s.length; i++) {
     if (text[0] ===  list_s[0]) {
-      upl = "No update";
-      console.log("latest = " + list_s[0]);
+      upl = "No update\n" + "latest = " + list_s[0];
       YN = false;
       break;
     } else if (text[0] === list_s[count]) {
@@ -82,11 +81,10 @@ client.fetch(TARGET_URLE, function (err, $, res, body) {
   let count = 0;
   let upl = [];
   let  YN;
-  console.log("eatmanga");
+  console.log("---eatmanga---");
   for (let i = 0; i < list_e.length; i++) {
     if (text_e[0] ===  list_e[0]) {
-      upl = "No update";
-      console.log("latest = " + list_e[0]);
+      upl = "No update\n" + "latest = " + list_e[0];
       YN = false;
       break;
     } else if (text_e[0] === list_e[i]) {
@@ -134,11 +132,10 @@ client.fetch(TARGET_URLH, function (err, $, res, body) {
   let count = 0;
   let upl = [];
   let  YN;
-  console.log("himado.in")
+  console.log("---himado.in---")
   for (let i = 0; i < list_hima.length; i++) {
     if (text_e[0] === list_hima[0]) {
-      upl = "No update";
-      console.log("latest = " + list_hima[0]);
+      upl = "No update\n" + "latest = " + list_hima[0];
       YN = false;
       break;
     } else if (text_e[0] === list_hima[i]) {
