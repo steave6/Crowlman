@@ -154,6 +154,11 @@ module.exports = function () {
 
     console.log(upl);
 
+    let note = upl.toString();
+    note = note.replace(/,/g, "\n");
+
+    Notif(YN, 'himado.in update', note);
+
     let save = [];
     let himatitle = [];
     for (let i = 0; i < list_hima.length; i++) {
