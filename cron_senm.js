@@ -2,6 +2,9 @@
 
 const cronJob = require('cron').CronJob;
 const getNew = require('./export_getnewlist');
+
+//実行時間表示オブジェクト
+const date = new Date();
  
 // 毎秒実行
 let cronTime = "00 00 * * * *";
@@ -15,6 +18,7 @@ let job = new cronJob({
  
   //指定時に実行したい関数
   , onTick: function() {
+    console.log(date.toLocaleString());
     getNew();
   }
  
