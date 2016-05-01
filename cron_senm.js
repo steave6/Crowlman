@@ -1,11 +1,11 @@
 'use strict';
 
 const cronJob = require('cron').CronJob;
-const getNew = require('./export_getnewlist');
+const getNew = require('./getnewlist.js');
 
  
 // 毎秒実行
-let cronTime = "00 00 * * * *";
+let cronTime = "00 00 */2 * * *";
  
 // 一度だけ実行したい場合、Dateオブジェクトで指定も可能
 // let cronTime = new Date();
