@@ -1,12 +1,14 @@
+#! /usr/bin/env node
 'use strict';
 
 const TARGET_URLH = "http://himado.in/?sort=movie_id&cat=%E3%82%A2%E3%83%8B%E3%83%A1&mode=search",
   TARGET_URLS = "http://raw.senmanga.com/",
   TARGET_URLE = "http://eatmanga.com/popular/";
 
-const client = require('cheerio-httpcli');
-const fs = require('fs');
-const notifier = require('node-notifier');
+const client = require('cheerio-httpcli'),
+      fs = require('fs'),
+      notifier = require('node-notifier'),
+      path = require('path');
 
 
 // Notification func If there is any update.
@@ -35,7 +37,7 @@ const Senmanga = function () {
       }
     });
 
-    let text = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__senm_update.txt', "utf-8");
+    let text = fs.readFileSync(path.resolve(__dirname, '__senm_update.txt'), "utf-8");
     text = text.split(',');
 
     let  count = 0;
@@ -69,7 +71,7 @@ const Senmanga = function () {
     
     Notif(YN, "senmanga update", note);
 
-    fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__senm_update.txt', list_s);
+    fs.writeFileSync(path.resolve(__dirname, '__senm_update.txt'), list_s);
   });
 }
 
@@ -81,7 +83,7 @@ const Eatmanga = function () {
       list_e.push(push);
     });
 
-    let text_e = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__eatm_update.txt', "utf-8");
+    let text_e = fs.readFileSync(path.resolve(__dirname, '__eatm_update.txt'), "utf-8");
     text_e = text_e.split(',');
 
     let count = 0;
@@ -115,7 +117,7 @@ const Eatmanga = function () {
 
     Notif(YN, 'eatmanga update', note);
 
-    fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__eatm_update.txt', list_e);
+    fs.writeFileSync(path.resolve(__dirname, '__eatm_update.txt'), list_e);
   });
 }
 
@@ -141,7 +143,7 @@ const Himado = function () {
       }
     });
 
-    let text_e = fs.readFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', "utf-8");
+    let text_e = fs.readFileSync(path.resolve(__dirname, '__himado.txt'), "utf-8");
     text_e = text_e.split(',');
 
     let count = 0;
@@ -181,8 +183,8 @@ const Himado = function () {
       save.push(list_hima[i].href);
       himatitle.push(list_hima[i].title);
     }
-    fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado.txt', save);
-    fs.writeFileSync('/home/steav/Documents/P/NodeProject/senm/__himado_update.txt', himatitle);
+    fs.writeFileSync(path.resolve(__dirname, '__himado.txt'), save);
+    fs.writeFileSync(path.resolve(__dirname, '__himado_update.txt'), himatitle);
   });
 }
 
@@ -193,6 +195,8 @@ Himado();
 }
 
 if (require.main === module) {
+const date = new Date();
+console.log(date.toLocaleTimeString());
 Senmanga();
 Eatmanga();
 Himado();
