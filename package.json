@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "getnewlist.js",
+  "bin": {
+    "getlist": "getnewlist.js"
+  },
   "directories": {
     "test": "test"
   },
