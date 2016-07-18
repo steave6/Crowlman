@@ -5,7 +5,6 @@ check the web page and check update
 ```bash
 $ git clone https://github.com/steave6/Crowlman.git
 $ npm init
-$ touch __senm_update.txt __eatm_update.txt __eatm_update.txt __himado.txt
 $ node getnewlist.js
 ```
 
