@@ -29,7 +29,7 @@ const Senmanga = function () {
     let list_s = [];
     let ite = 0;
     $('tr a').each(function (idx) {
-      let push = $(this).attr("title");
+      let push = $(this).text();
       list_s.push(push);
       ite ++;
       if (ite >= 20) {
@@ -68,7 +68,7 @@ const Senmanga = function () {
 
     let note = upl.toString();
     note = note.replace(/,/g, "\n");
-    
+
     Notif(YN, "senmanga update", note);
 
     fs.writeFileSync(path.resolve(__dirname, '__senm_update.txt'), list_s);
@@ -130,12 +130,12 @@ const Himado = function () {
     $('#thumb > tr').each(function (idx) {
       ite ++;
       $(".thumbblock_3colum", this).each(function (idx) {
-        let push_href = $("a", this).attr("href"); 
-        let push_title = $("a", this).attr("title"); 
+        let push_href = $("a", this).attr("href");
+        let push_title = $("a", this).attr("title");
         list_hima.push({
           href: push_href,
           title: push_title
-        }); 
+        });
       });
 
       if (ite >= 10) {
